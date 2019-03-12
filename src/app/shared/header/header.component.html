@@ -3,25 +3,16 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Metro_de_Medellin_logo.svg" width="30" height="30" alt="">
-        </a>
 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item" >
-                    <a class="nav-link">Ver mapa</a>
+                <li class="nav-item" [routerLinkActive]="'active'">
+                    <a class="nav-link" [routerLink]="['/clientes']">Clientes</a>
                 </li>
-                <li class="nav-item" >
-                    <a class="nav-link">Ver mapa</a>
-                </li>
-                <li class="nav-item" >
-                    <a class="nav-link">Ver mapa</a>
+                <li class="nav-item" [routerLinkActive]="'active'">
+                    <a class="nav-link" [routerLink]="['/asesores']">Asesores</a>
                 </li>
             </ul>
-            <div class="col">
-                <button class="btn btn-outline-danger my-2 my-sm-0 float-right">Salir</button>
-            </div>
         </div>
     </nav>
 </header>

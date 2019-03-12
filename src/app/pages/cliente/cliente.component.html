@@ -1,64 +1,67 @@
-<div class="col-8 offset-2">
+<div class="col-10 offset-1">
     <h2 class="mb-3 text-center text-info">Crear clientes</h2>
     <form method="post" [formGroup]="personForm" class="form-horizontal" (submit)="onSubmit(createOrUpdate[0])">
-    <div class="form-group">
-    <input type="hidden" formControlName="id" class="form-control" placeholder="">
-    <label for="exampleInputEmail1">Nombres</label>
-    <input type="text" required class="form-control" formControlName="nombre" placeholder="Nombres">
-    <app-messages [control]="personForm.controls['nombre']"></app-messages>
+        <div class="form-group">
+            <input type="hidden" formControlName="id" class="form-control" placeholder="">
+            <label for="exampleInputEmail1">Nombres</label>
+            <input type="text" required class="form-control" formControlName="nombre" placeholder="Nombres">
+            <app-messages [control]="personForm.controls['nombre']"></app-messages>
 
-    </div>
+        </div>
 
-    <div class="form-group">
-    <label for="">Dirección</label>
-    <input type="text" required formControlName="direccion" class="form-control" id="exampleInputPassword1" placeholder="Crr 44 72-21">
-    </div>
-    <div class="form-group">
-    <label for="">Ciudad</label>
-    <input type="text" required formControlName="ciudad" class="form-control" id="" placeholder="Medellin">
-    </div>
-    <div class="form-group">
-    <label for="">Teléfono</label>
-    <input type="text" required formControlName="telefono" class="form-control" id="" placeholder="3214567">
-    </div>
-    
-    <button name="{{createOrUpdate[0]}}" class="{{createOrUpdate[2]}}" type="submit">
-        <i class="{{createOrUpdate[1]}} "></i> &nbsp;
-        <b>{{createOrUpdate[0]}}</b>
-    </button>
+        <div class="form-group">
+            <label for="">Dirección</label>
+            <input type="text" required formControlName="direccion" class="form-control" id="exampleInputPassword1"
+                placeholder="Crr 44 72-21">
+        </div>
+        <div class="form-group">
+            <label for="">Ciudad</label>
+            <input type="text" required formControlName="ciudad" class="form-control" id="" placeholder="Medellin">
+        </div>
+        <div class="form-group">
+            <label for="">Teléfono</label>
+            <input type="text" required formControlName="telefono" class="form-control" id="" placeholder="3214567">
+        </div>
+
+        <button name="{{createOrUpdate[0]}}" class="{{createOrUpdate[2]}}" type="submit">
+            <i class="{{createOrUpdate[1]}} "></i> &nbsp;
+            <b>{{createOrUpdate[0]}}</b>
+        </button>
     </form>
     <h2 class="mb-3 text-center text-info">Lista de clientes</h2>
     <table class="table">
-    <thead class="thead-dark">
-    <tr>
-    <th scope="col">Nombre</th>
-    <th scope="col">Direccion</th>
-    <th scope="col">Ciudad</th>
-    <th scope="col">Telefono</th>
-    <th scope="col" class="text-center">Tarjetas</th>
-    <th>Aciones</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let cliente of listClientes">
-    <td> {{ cliente.nombre }}</td>
-    <td> {{ cliente.direccion }}</td>
-    <td> {{ cliente.ciudad }}</td>
-    <td> {{ cliente.telefono }}</td>
-    <td class="text-center">
-    <ul>
-    <li *ngFor="let tarjeta of cliente.tarjetas">{{tarjeta.numero}}</li>
-    </ul>
-    </td>
-    <td> 
-            <button class="btn" type="button" data-toggle="tooltip" data-placement="top" title="Editar" (click)="Edit($e, cliente.id)">
-                <i class="fa fa-edit fa-lg" tooltip="test"></i>
-            </button>
-            <button class="btn" type="button" data-toggle="tooltip" data-placement="top" title="Eliminar" (click)="Delete($e, cliente.id)">
-                    <i class="fa fa-remove fa-lg" tooltip="test"></i>
-                </button>
-            </td>
-    </tr>
-    </tbody>
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Direccion</th>
+                <th scope="col">Ciudad</th>
+                <th scope="col">Telefono</th>
+                <th scope="col" class="text-center">Tarjetas</th>
+                <th>Aciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cliente of listClientes">
+                <td> {{ cliente.nombre }}</td>
+                <td> {{ cliente.direccion }}</td>
+                <td> {{ cliente.ciudad }}</td>
+                <td> {{ cliente.telefono }}</td>
+                <td class="text-center">
+                    <ul>
+                        <li *ngFor="let tarjeta of cliente.tarjetas">{{tarjeta.numero}}</li>
+                    </ul>
+                </td>
+                <td>
+                    <button class="btn" type="button" data-toggle="tooltip" data-placement="top" title="Editar"
+                        (click)="Edit($e, cliente.id)">
+                        <i class="fa fa-edit fa-lg" tooltip="test"></i>
+                    </button>
+                    <button class="btn" type="button" data-toggle="tooltip" data-placement="top" title="Eliminar"
+                        (click)="Delete($e, cliente.id)">
+                        <i class="fa fa-remove fa-lg" tooltip="test"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
     </table>
-    </div>
+</div>
