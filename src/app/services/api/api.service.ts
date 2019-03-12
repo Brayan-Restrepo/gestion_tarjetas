@@ -16,8 +16,8 @@ export class ApiService {
   constructor(
     private http: HttpClient
   ) {
-    // this.url = 'https://gestion-tarjetas-ibm.herokuapp.com/api/';
-    this.url = 'http://localhost:8080/api/';
+    this.url = 'https://gestion-tarjetas-ibm.herokuapp.com/api/';
+    // this.url = 'http://localhost:8080/api/';
   }
 
 

@@ -48,10 +48,13 @@
                 <td> {{ cliente.telefono }}</td>
                 <td class="text-center">
                     <ul>
-                        <li *ngFor="let tarjeta of cliente.tarjetas">{{tarjeta.numero}}</li>
+                        <li *ngFor="let tarjeta of cliente.tarjetas">
+                            <span>{{tarjeta.numero}}</span>
+                        </li>
                     </ul>
                 </td>
-                <td>
+                <td class="text-center">
+                    <a class="" [routerLink]="['/consumos', cliente.id]"><i class="fa fa-eye fa-lg" tooltip="test"></i></a>
                     <button class="btn" type="button" data-toggle="tooltip" data-placement="top" title="Editar"
                         (click)="Edit($e, cliente.id)">
                         <i class="fa fa-edit fa-lg" tooltip="test"></i>

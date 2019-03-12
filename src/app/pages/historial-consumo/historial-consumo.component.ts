@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { ConsumosService } from 'src/app/services/consumos/consumos.service';
 
 @Component({
   selector: 'app-historial-consumo',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistorialConsumoComponent implements OnInit {
 
-  constructor() { }
+  public hitoricoConsumo: any;
+  private idClietne: Number;
+
+  constructor(private rutaActiva: ActivatedRoute,
+    private _consumosService: ConsumosService) {
+      this.idClietne = this.rutaActiva.snapshot.params.id;
+    console.log(this.rutaActiva.snapshot.params.id);
+  }
 
   ngOnInit() {
+    this.getConsumos()
+  }
+
+  public getConsumos() {
+    this._consumosService.listConsumos(this.idClietne)
+      .subscribe(response => {
+        this.hitoricoConsumo = response;
+        console.log(response)
+      });
   }
 
 }

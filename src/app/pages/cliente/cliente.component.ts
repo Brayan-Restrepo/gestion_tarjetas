@@ -28,6 +28,7 @@ export class ClienteComponent implements OnInit {
   ngOnInit() {
     this.getCliente()
   }
+
   public getCliente() {
     this._clienteService.listClentes()
       .subscribe(response => {
@@ -35,6 +36,7 @@ export class ClienteComponent implements OnInit {
         console.log(response)
       });
   }
+  
   public onSubmit(createOrUpdate) {
     if (createOrUpdate == 'Registar') {
       if (this.personForm.status === 'VALID') {
