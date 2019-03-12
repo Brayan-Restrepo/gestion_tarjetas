@@ -4,13 +4,33 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HeaderComponent } from './shared/header/header.component';
+import { ClienteComponent } from './pages/cliente/cliente.component';
+
+import { HttpClientModule } from '@angular/common/http';
+import { HistorialConsumoComponent } from './pages/historial-consumo/historial-consumo.component';
+import { AsesoresComponent } from './pages/asesores/asesores.component';
+//forms
+import { ReactiveFormsModule } from '@angular/forms';
+import { ValidationsMessagesModule } from './validations-messages/validations-messages.module';
+
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    ClienteComponent,
+    HistorialConsumoComponent,
+    AsesoresComponent
   ],
   imports: [
+    ValidationsMessagesModule,
+    ReactiveFormsModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

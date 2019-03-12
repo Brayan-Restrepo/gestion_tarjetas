@@ -1,0 +1,28 @@
+.err-message{
+    margin-top: 2%;
+    text-align: center;
+}
+
+
+.float-message{
+    position: absolute;
+    top:80%;
+    right: 5%;
+    background-color: #be4b49;
+    padding: 1%;
+    color:white;
+    font-weight: bold;
+
+}
+
+.float-message:before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-width: 0 10px 10px;
+    border-style: solid;
+    border-color: transparent transparent #be4b49;
+}
