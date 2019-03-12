@@ -14,6 +14,7 @@ import { AsesoresComponent } from './pages/asesores/asesores.component';
 //forms
 import { ReactiveFormsModule } from '@angular/forms';
 import { ValidationsMessagesModule } from './validations-messages/validations-messages.module';
+import { TarjetaPipe } from './pipes/tarjeta.pipe';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ValidationsMessagesModule } from './validations-messages/validations-me
     HeaderComponent,
     ClienteComponent,
     HistorialConsumoComponent,
-    AsesoresComponent
+    AsesoresComponent,
+    TarjetaPipe
   ],
   imports: [
     ValidationsMessagesModule,

@@ -11,8 +11,8 @@ export class ClienteComponent implements OnInit {
 
   public personForm = this._fb.group({
     nombre: ['', Validators.pattern('^[0-9a-zA-Z]+$')],
-    direccion: ['', Validators.pattern('^[0-9a-zA-Z]+$')],
-    telefono: ['', Validators.pattern('^[0-9a-zA-Z]+$')],
+    direccion: ['', Validators.required],
+    telefono: ['', Validators.required],
     ciudad: ['', Validators.pattern('^[0-9a-zA-Z]+$')],
     id: ['']
   });
@@ -28,48 +28,49 @@ export class ClienteComponent implements OnInit {
   ngOnInit() {
     this.getCliente()
   }
-  public getCliente(){
+  public getCliente() {
     this._clienteService.listClentes()
-    .subscribe(response => {
-      this.listClientes = response;
-      console.log(response)
-    });
+      .subscribe(response => {
+        this.listClientes = response;
+        console.log(response)
+      });
   }
   public onSubmit(createOrUpdate) {
-    if(createOrUpdate=='Registar'){
-    if (this.personForm.status === 'VALID') {
-      this._clienteService.createClient(this.personForm.value).subscribe(data => {
+    if (createOrUpdate == 'Registar') {
+      if (this.personForm.status === 'VALID') {
+        this._clienteService.createClient(this.personForm.value).subscribe(data => {
+          this.personForm.reset();
+          this.getCliente()
+        },
+          err => {
+            let messages: string = "";
+            let keys = Object.keys(err.error)
+          })
+      } else {
+        console.log('not valid...');
+      }
+    } else if (createOrUpdate === 'Actualizar') {
+      this._clienteService.updateClient(this.personForm.value).subscribe(data => {
+        this.createOrUpdate = ['Registar', 'fa fa-plus fa-lg', 'btn btn-success btn-block'];
+        this.personForm.reset();
         this.getCliente()
       },
-      err => {
-        let messages: string = "";
-        let keys = Object.keys(err.error)
-      })
-    }else {
+        err => {
+          let messages: string = "";
+          let keys = Object.keys(err.error)
+        })
+    } else {
       console.log('not valid...');
     }
-  }
-  if (this.personForm.status === 'VALID') {
-    this._clienteService.updateClient(this.personForm.value).subscribe(data => {
-      this.createOrUpdate = ['Registar', 'fa fa-plus fa-lg', 'btn btn-success btn-block'];
-      this.getCliente()
-    },
-    err => {
-      let messages: string = "";
-      let keys = Object.keys(err.error)
-    })
-  }else {
-    console.log('not valid...');
-  }
   }
   public Delete($eve, id) {
     this._clienteService.deleteClient(id).subscribe(data => {
       this.getCliente()
     },
-    err => {
-      let messages: string = "";
-      let keys = Object.keys(err.error)
-    })
+      err => {
+        let messages: string = "";
+        let keys = Object.keys(err.error)
+      })
   }
   public Edit($e, id) {
     let currentCliente = this.listClientes.find(p => p.id === id);
@@ -80,6 +81,6 @@ export class ClienteComponent implements OnInit {
       if (!this.personForm.controls[vehicleKey]) return;
       this.personForm.controls[vehicleKey].setValue(currentCliente[vehicleKey]);
     });
-  }  
+  }
 
 }

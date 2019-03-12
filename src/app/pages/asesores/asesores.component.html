@@ -1,3 +1,49 @@
-<p>
-  asesores works!
-</p>
+<div class="col-10 offset-1">
+  <h2 class="mb-3 text-center text-info">Crear asesores</h2>
+  <form method="post" [formGroup]="personForm" class="form-horizontal" (submit)="onSubmit(createOrUpdate[0])">
+      <div class="form-group">
+          <input type="hidden" formControlName="id" class="form-control" placeholder="">
+          <label for="exampleInputEmail1">Nombres</label>
+          <input type="text" required class="form-control" formControlName="nombre" placeholder="Nombres">
+          <app-messages [control]="personForm.controls['nombre']"></app-messages>
+
+      </div>
+
+      <div class="form-group">
+          <label for="">Especialidad</label>
+          <input type="text" required formControlName="especialidad" class="form-control" id="exampleInputPassword1"
+              placeholder="Especialidad">
+      </div>
+
+      <button name="{{createOrUpdate[0]}}" class="{{createOrUpdate[2]}}" type="submit">
+          <i class="{{createOrUpdate[1]}} "></i> &nbsp;
+          <b>{{createOrUpdate[0]}}</b>
+      </button>
+  </form>
+  <h2 class="mb-3 text-center text-info">Lista de asesores</h2>
+  <table class="table">
+      <thead class="thead-dark">
+          <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Especialidad</th>
+              <th>Aciones</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let asesor of listAsesores">
+              <td> {{ asesor.nombre }}</td>
+              <td> {{ asesor.especialidad }}</td>
+              <td>
+                  <button class="btn" type="button" data-toggle="tooltip" data-placement="top" title="Editar"
+                      (click)="Edit($e, asesor.id)">
+                      <i class="fa fa-edit fa-lg" tooltip="test"></i>
+                  </button>
+                  <button class="btn" type="button" data-toggle="tooltip" data-placement="top" title="Eliminar"
+                      (click)="Delete($e, asesor.id)">
+                      <i class="fa fa-remove fa-lg" tooltip="test"></i>
+                  </button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
